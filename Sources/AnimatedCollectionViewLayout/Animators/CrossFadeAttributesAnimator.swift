@@ -18,5 +18,11 @@ public struct CrossFadeAttributesAnimator: LayoutAttributesAnimator {
         let contentOffset = collectionView.contentOffset
         attributes.frame = CGRect(origin: contentOffset, size: attributes.frame.size)
         attributes.alpha = 1 - abs(position)
+        
+        if attributes.alpha <= 0 {
+            attributes.isHidden = true
+        } else {
+            attributes.isHidden = false
+        }
     }
 }
